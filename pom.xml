@@ -5,9 +5,17 @@
 
     <groupId>tre.yantai</groupId>
     <artifactId>springcloud-alibaba</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>springcloud-alibaba</name>
     <description>Spring Cloud Learning</description>
+
+    <modules>
+        <module>nacos-discovery-provider</module>
+        <module>nacos-discovery-consumer</module>
+        <module>nacos-discovery-consumer-feign</module>
+        <module>nacos-discovery-consumer-webflux</module>
+    </modules>
 
     <properties>
         <java.version>1.8</java.version>
@@ -45,4 +53,12 @@
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
