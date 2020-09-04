@@ -1,0 +1,19 @@
+server:
+  port: 8040
+spring:
+  application:
+    name: nacos-discovery-gateway-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        metadata:
+          name: shaohui
+    gateway:
+      routes:
+        - id: nacos-discovery-provider
+          uri: lb://nacos-discovery-provider
+          predicates:
+            - Path=/provider/** # nacos-discovery-provider模块配置了context-path: /provider
+          filters:
+            - StripPrefix=1 # 如果nacos-discovery-provider模块没有配置context-path: /provider，则跳过第一个路由：provider

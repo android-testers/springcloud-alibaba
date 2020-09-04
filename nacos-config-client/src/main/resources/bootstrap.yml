@@ -1,0 +1,18 @@
+server:
+  port: 8030
+spring:
+  application:
+    name: nacos-config-client
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml # 优先读取 nacos-config-client-dev.yml，其次读取 nacos-config-client.yml，最后读取newConfig.yml
+        namespace: c51295b2-d4f8-4bb9-8eed-736729170568 # 需要输入命名空间(namespace1)的id
+        group: DEFAULT_GROUP
+        extension-configs[0]: # 新的配置文件
+          data-id: newConfig.yml
+          group: DEFAULT_GROUP
+          refresh: true
+  profiles:
+    active: dev
